@@ -68,7 +68,7 @@ class DB_Map():
         conn = sqlite3.connect(self.database)
         with conn:
             cursor = conn.cursor()
-            cursor.execute('SELECT city FROM cities LIMIT 200')
+            cursor.execute('SELECT city FROM cities LIMIT 50')
             return [row[0] for row in cursor.fetchall()]
 
     def get_coordinates(self, city_name):
@@ -86,7 +86,7 @@ class DB_Map():
         with conn:
             cursor = conn.cursor()
             cursor.execute(
-                "SELECT city FROM cities WHERE country=? LIMIT 300",
+                "SELECT city FROM cities WHERE country=? LIMIT 10",
                 (country,)
             )
             return [row[0] for row in cursor.fetchall()]
